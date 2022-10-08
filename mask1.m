@@ -2,6 +2,9 @@ clc
 clear all
 close all
 masksize=input('Enter Mask Value: ');
+if rem(masksize, 2) == 0
+    disp('masksize must be odd number')
+else
 x=imread('cameraman.tif');
 x=imnoise(x,'salt & pepper');
 figure(1);imshow(x)
@@ -22,3 +25,4 @@ for i=(masksize+1)/2:m+(masksize-1)/2% (size(mask,1)-1)/2:(m+(size(mask,1)+1)/2)
     end
 end
 figure(2);imshow(uint8(z));
+end
